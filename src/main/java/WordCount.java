@@ -8,8 +8,8 @@ public class WordCount {
 
   public Map<String, Integer> phrase(String sentence) {
     this.wordCounts = new HashMap<String, Integer>();
-    String[] sentenceArray = sentence.split(" ");
-    for (String word : sentenceArray) {
+    List<String> wordList = toWordList(sentence);
+    for (String word : wordList) {
       if (wordCounts.get(word) == null) {
         wordCounts.put(word, 1);
       } else {
@@ -18,5 +18,22 @@ public class WordCount {
     }
 
     return this.wordCounts;
+  }
+
+  private static List<String> toWordList(String sentence) {
+    String[] sentenceArray = sentence.trim().split("\\s+");
+    List<String> result = new ArrayList();
+    for (String oldWord : sentenceArray) {
+      String word = lettersOnly(oldWord);
+      if (!word.equals("")) {
+        result.add(word.toLowerCase());
+      }
+    }
+    
+    return result;
+  }
+
+  private static String lettersOnly(String oldString) {
+    return oldString.replaceAll("[\\W]", "");
   }
 }

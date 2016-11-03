@@ -72,7 +72,6 @@ public class WordCountTest {
 
     }
 
-    @Ignore
     @Test
     public void includeNumbers() {
         Map<String, Integer> actualWordCount = new HashMap<String, Integer>();
@@ -87,7 +86,6 @@ public class WordCountTest {
         );
     }
 
-    @Ignore
     @Test
     public void normalizeCase() {
         Map<String, Integer> actualWordCount = new HashMap<String, Integer>();
